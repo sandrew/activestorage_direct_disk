@@ -5,9 +5,9 @@ require 'active_storage/service/disk_service'
 module ActiveStorage
   class Service::DirectDiskService < Service::DiskService
     def initialize(root:)
+      @root = Rails.root.join('public', root)
       @public_root = root
       @public_root.prepend('/') unless @public_root.starts_with?('/')
-      @root = Rails.root.join('public', root)
     end
 
     def url(key, _opts = {})
