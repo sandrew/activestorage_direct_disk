@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
-module ActiveStorage::DirectDisk::VariantExt
-  def service_url(*params)
-    processed if service.is_a?(ActiveStorage::Service::DirectDiskService)
-    super
+module ActiveStorage
+  module DirectDisk
+    module VariantExt
+      def service_url(*params)
+        processed if service.is_a?(ActiveStorage::Service::DirectDiskService)
+        super
+      end
+    end
   end
 end
 
